@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>美的城</title>
+        <style>
+		body{
+			margin:0px;
+			overflow:hidden;
+		}
+        </style>
+    </head>
+    <body>
+        <a href="http://www.example.com"><img id="bgImg" src="img.jpg" alt="" style="width:100%;height:100%;"></a>
+        <script>
+        try{
+        	var imgS = new Image();
+        	imgS.src = 'img.jpg';
+        	imgS.onload = function() {
+        		var w = document.body.scrollWidth;
+        		var h = document.body.scrollHeight;
+        		var x = imgS.width;
+        		var y = imgS.height;
+        		var ps = w / h;
+        		var pr = x / y;
+        		var xNew, yNew, left, top;
+        		if (ps >= pr) {
+        			xNew = w;
+        			yNew = (xNew * y) / x;
+        			left = 0;
+        			top = ((h - yNew) / 2) + 'px';
+        		} else {
+        			yNew = h;
+        			xNew = (yNew * x) / y;
+        			top = 0;
+        			left = ((w - xNew) / 2) + 'px';
+        		}
+        		var bgImg = document.getElementById('bgImg');
+        		bgImg.width = xNew;
+        		bgImg.height = yNew;
+        		bgImg.style.top = top;
+        		bgImg.style.left = left;
+        		bgImg.style.display = 'block';
+
+}
+}catch(e){
+                
+            }
+        </script>
+    </body>
+</html>
